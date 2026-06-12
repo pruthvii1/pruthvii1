@@ -1,0 +1,302 @@
+---
+import Layout from "../layouts/Layout.astro";
+import githubIcon from "../../node_modules/@tabler/icons/icons/outline/brand-github.svg";
+import youtubeIcon from "../../node_modules/@tabler/icons/icons/outline/brand-youtube.svg";
+import xIcon from "../../node_modules/@tabler/icons/icons/outline/brand-x.svg";
+import externalLinkIcon from "../../node_modules/@tabler/icons/icons/outline/external-link.svg";
+import browserIcon from "../../node_modules/@tabler/icons/icons/outline/browser.svg";
+import targetIcon from "../../node_modules/@tabler/icons/icons/outline/target-arrow.svg";
+import likedIcon from "../../node_modules/@tabler/icons/icons/outline/heart-search.svg";
+import replyIcon from "../../node_modules/@tabler/icons/icons/outline/message-reply.svg";
+import bubbleIcon from "../../node_modules/@tabler/icons/icons/outline/chart-bubble.svg";
+import microphoneIcon from "../../node_modules/@tabler/icons/icons/outline/microphone.svg";
+
+const socials = [
+	{ label: "GitHub", href: "https://github.com/pruthvii1", icon: githubIcon },
+	{ label: "YouTube", href: "https://youtube.com/@pruthvii", icon: youtubeIcon },
+	{ label: "X", href: "https://x.com/pruthvithinks", icon: xIcon },
+];
+
+const projects = [
+	{
+		name: "Browser AI",
+		icon: browserIcon,
+		description: "A browser-native assistant experiment for getting useful work done inside pages.",
+	},
+	{
+		name: "Kitty Killer",
+		icon: targetIcon,
+		description: "A small game prototype with quick rounds, simple controls, and a score-first loop.",
+	},
+	{
+		name: "Instagram Liked Navigator",
+		icon: likedIcon,
+		description: "A utility for moving through liked Instagram posts without losing context.",
+	},
+	{
+		name: "X Reply Guy",
+		icon: replyIcon,
+		description: "A lightweight tool for drafting and navigating replies on X.",
+	},
+	{
+		name: "Stock Bubble",
+		icon: bubbleIcon,
+		description: "A visual stock-watching experiment focused on quick pattern recognition.",
+	},
+	{
+		name: "Record Me",
+		icon: microphoneIcon,
+		description: "A direct recording tool for capturing short clips without extra setup.",
+	},
+];
+---
+
+<Layout>
+	<main class="page-shell">
+		<section class="intro" aria-labelledby="intro-title">
+			<p class="kicker">pruthvii.com</p>
+			<h1 id="intro-title">building useful things.</h1>
+			<p class="lead">
+				I am 18, currently building products and experiments that help people do something a little faster,
+				clearer, or easier. So far: a little over 1k in revenue and a lot of shipping.
+			</p>
+
+			<nav class="social-links" aria-label="Social links">
+				{
+					socials.map((social) => (
+						<a href={social.href} target="_blank" rel="noreferrer">
+							<img src={social.icon.src} alt="" aria-hidden="true" />
+							<span>{social.label}</span>
+						</a>
+					))
+				}
+			</nav>
+		</section>
+
+		<section class="projects" aria-labelledby="projects-title">
+			<h2 id="projects-title">Projects</h2>
+			<ul>
+				{
+					projects.map((project) => (
+						<li>
+							<div class="project-icon" aria-hidden="true">
+								<img src={project.icon.src} alt="" />
+							</div>
+							<div class="project-copy">
+								<h3>{project.name}</h3>
+								<p>{project.description}</p>
+								<div class="project-actions">
+									<a href="#" aria-label={`${project.name} code repository`}>
+										<img src={githubIcon.src} alt="" aria-hidden="true" />
+										<span>Code</span>
+									</a>
+									<a href="#" aria-label={`${project.name} project link`}>
+										<img src={externalLinkIcon.src} alt="" aria-hidden="true" />
+										<span>Link</span>
+									</a>
+								</div>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+
+		<footer class="page-footer">
+			<p class="shipping">Shipping from <a href="https://www.google.com/maps/search/?api=1&query=18.420810750772624,76.57389488551998" target="_blank" rel="noreferrer">Latur</a>, India for the globe <span aria-hidden="true">🌍</span></p>
+		</footer>
+	</main>
+</Layout>
+
+<style>
+	:global(body) {
+		background: #ffffff;
+		color: #111111;
+		font-family:
+			ui-sans-serif,
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			sans-serif;
+	}
+
+	:global(a) {
+		color: inherit;
+	}
+
+	.page-shell {
+		width: min(100% - 40px, 760px);
+		margin: 0 auto;
+		padding: 88px 0 24px;
+	}
+
+	.intro {
+		margin-bottom: 72px;
+	}
+
+	.kicker,
+	.lead,
+	.projects p,
+	.project-actions,
+	.social-links {
+		font-size: 16px;
+		line-height: 1.65;
+	}
+
+	.kicker {
+		margin: 0 0 18px;
+		color: #6d6d6d;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		margin: 0;
+	}
+
+	h1 {
+		max-width: 11ch;
+		font-size: clamp(44px, 8vw, 76px);
+		line-height: 0.98;
+		font-weight: 640;
+		letter-spacing: 0;
+	}
+
+	.lead {
+		max-width: 58ch;
+		margin-top: 28px;
+		color: #3d3d3d;
+	}
+
+	.social-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 18px 24px;
+		margin-top: 30px;
+	}
+
+	.social-links a,
+	.project-actions a {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		color: #6d6d6d;
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+
+	.social-links a:hover,
+	.project-actions a:hover {
+		color: #111111;
+	}
+
+	.social-links a img,
+	.project-actions a img {
+		opacity: 0.65;
+		transition: opacity 0.15s ease;
+	}
+
+	.social-links a:hover img,
+	.project-actions a:hover img {
+		opacity: 1;
+	}
+
+	.social-links img,
+	.project-actions img,
+	.project-icon img {
+		display: block;
+		width: 20px;
+		height: 20px;
+	}
+
+	.projects h2 {
+		margin-bottom: 28px;
+		font-size: 22px;
+		line-height: 1.25;
+		font-weight: 620;
+		letter-spacing: 0;
+	}
+
+	.projects ul {
+		display: grid;
+		gap: 38px;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.projects li {
+		display: grid;
+		grid-template-columns: 32px 1fr;
+		gap: 18px;
+		align-items: start;
+	}
+
+	.project-icon {
+		display: grid;
+		place-items: start center;
+		padding-top: 2px;
+		color: #222222;
+	}
+
+	.projects h3 {
+		font-size: 18px;
+		line-height: 1.35;
+		font-weight: 620;
+		letter-spacing: 0;
+	}
+
+	.projects p {
+		max-width: 58ch;
+		margin-top: 6px;
+		color: #555555;
+	}
+
+	.project-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+		margin-top: 11px;
+	}
+
+	.page-footer {
+		margin-top: 80px;
+		text-align: center;
+	}
+
+	.page-footer .shipping {
+		margin: 0;
+		font-size: 15px;
+		line-height: 1.6;
+		color: #555555;
+	}
+
+	.page-footer .shipping a {
+		color: inherit;
+		text-decoration: underline;
+		text-decoration-color: #c9c9c9;
+		text-underline-offset: 3px;
+		transition: text-decoration-color 0.15s ease;
+	}
+
+	.page-footer .shipping a:hover {
+		text-decoration-color: #555555;
+	}
+
+	@media (max-width: 720px) {
+		.page-shell {
+			width: min(100% - 28px, 760px);
+			padding: 56px 0 20px;
+		}
+
+		.intro {
+			margin-bottom: 56px;
+		}
+
+		.projects ul {
+			gap: 30px;
+		}
+	}
+</style>
