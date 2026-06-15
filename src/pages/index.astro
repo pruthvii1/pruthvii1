@@ -30,7 +30,7 @@ const projects = [
 		image: "/kitty-killer.png",
 		description: "A small browser game built with Babylon.js. Walk around a low-poly forest, find the infected cat, and stop the infection before it spreads.",
 		github: "https://github.com/pruthvii1/kitty-killer",
-		link: null,
+		link: "https://pruthvii.com/kitty",
 	},
 	{
 		name: "OpenBrowse",
@@ -40,16 +40,16 @@ const projects = [
 		link: null,
 	},
 	{
+		name: "Stock Bubble",
+		image: "/stocks.png",
+		description: "A live NIFTY 50 market bubble view that sizes stocks by movement, colors gainers and losers, and surfaces trend stats, top movers, and sector labels at a glance.",
+		github: null,
+		link: "https://pruthvii.com/stocks",
+	},
+	{
 		name: "X Reply Guy",
 		image: null,
 		description: "A lightweight tool for drafting and navigating replies on X.",
-		github: null,
-		link: null,
-	},
-	{
-		name: "Stock Bubble",
-		image: null,
-		description: "A visual stock-watching experiment focused on quick pattern recognition.",
 		github: null,
 		link: null,
 	},
@@ -108,7 +108,7 @@ const projects = [
 										{project.link && (
 											<a href={project.link} target="_blank" rel="noreferrer" aria-label={`${project.name} project link`}>
 												<img src={externalLinkIcon.src} alt="" aria-hidden="true" />
-												<span>Link</span>
+												<span>Open</span>
 											</a>
 										)}
 									</div>
