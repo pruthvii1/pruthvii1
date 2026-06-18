@@ -1,3 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect x="8" y="8" width="16" height="16" rx="2" fill="#f5c518" transform="rotate(15 16 16)" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" aria-label="Cat face favicon">
+  <path fill="#111" d="M5 29V13L9 4l7 6 7-6 4 9v16z"/>
+  <circle cx="11" cy="17" r="2" fill="#fff"/>
+  <circle cx="21" cy="17" r="2" fill="#fff"/>
+  <path fill="#fff" d="M16 20l-2 2h4z"/>
+  <path stroke="#fff" stroke-width="1.6" stroke-linecap="round" d="M14 24h-6m6-3H7m11 3h6m-6-3h7"/>
 </svg>
