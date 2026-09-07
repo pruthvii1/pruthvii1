@@ -5,5 +5,9 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   devToolbar: {
     enabled: false
+  },
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'load'
   }
 });

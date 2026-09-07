@@ -19,3 +19,18 @@ I'm an 18-year-old builder from Latur, India, making useful products and experim
 - YouTube — [@pruthvii](https://youtube.com/@pruthvii)
 
 Shipping from Latur, India for the globe 🌍
+
+## Writing a blog post
+
+Add a Markdown file in `src/content/blog/`.
+Each post needs `title`, `description`, `date` in YYYY-MM-DD format, and `draft` in its frontmatter.
+Set `draft: false` to publish. The filename becomes the URL, for example `first-post.md` becomes `/blog/first-post/`.
+Published posts appear automatically on `/blog/` and the latest three appear on the homepage. Drafts have no public route.
+Start the post body with a paragraph or `##` heading. The page supplies the post title as its only `h1`.
+Run `npm run build` after editing content.
+
+## Domains and products
+
+Edit `directory` in `src/data/site.ts` to add domains or products with a name, type, description, URL, and link label.
+The directory currently includes `pruthvii.com`, `xwisdom.fyi`, and the GitHub profile.
+The directory appears on `/domains/`. The four abandoned projects appear as a compact list on the homepage and are maintained separately in `archive`.
