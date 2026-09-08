@@ -1,11 +1,12 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+import ArrowIcon from '../components/ArrowIcon.astro';
 const { title = 'Pruthviraj | pruthvii.com', description = 'Pruthviraj, a builder from Latur, India. Products, experiments, and writing.', } = Astro.props;
 const path = Astro.url.pathname;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,6 +14,14 @@ const path = Astro.url.pathname;
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <script is:inline>
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
     <title>{title}</title>
     <ClientRouter />
   </head>
@@ -21,20 +30,53 @@ const path = Astro.url.pathname;
     <div class="site-shell">
       <header class="site-header">
         <a class="wordmark" href="/" aria-label="pruthvii.com home">pruthvii.com</a>
-        <nav aria-label="Main navigation">
-          <a href="/#about">About</a>
-          <a href="/#projects">Projects</a>
-          <a href="/blog/" aria-current={path.startsWith('/blog') ? 'page' : undefined}>Blog</a>
-          <a href="/domains/" aria-current={path.startsWith('/domains') ? 'page' : undefined}>Domains</a>
-        </nav>
+        <div class="header-actions">
+          <nav aria-label="Main navigation">
+            <a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a>
+            <a href="/projects/" aria-current={path.startsWith('/projects') ? 'page' : undefined}>Projects</a>
+            <a href="/blog/" aria-current={path.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="Color theme">
+            <button class="theme-button" type="button" data-theme-value="light" aria-pressed="true"><span class="theme-label-full">Light</span><span class="theme-label-short" aria-hidden="true">L</span></button>
+            <button class="theme-button" type="button" data-theme-value="dark" aria-pressed="false"><span class="theme-label-full">Dark</span><span class="theme-label-short" aria-hidden="true">D</span></button>
+          </div>
+        </div>
       </header>
       <slot />
       <footer class="site-footer">
         <p>Built by Pruthviraj, in <a href="https://www.google.com/maps/search/?api=1&query=18.420810750772624,76.57389488551998" target="_blank" rel="noopener noreferrer">Latur, India</a>.</p>
-        <a href="https://x.com/pruthvithinks" target="_blank" rel="noopener noreferrer">Say hello ↗</a>
+        <a class="link-with-icon" href="https://x.com/pruthvithinks" target="_blank" rel="noopener noreferrer">Say hello <ArrowIcon direction="external" /></a>
       </footer>
     </div>
     <script>
+      type Theme = 'light' | 'dark';
+
+      const applyTheme = (theme: Theme) => {
+        document.documentElement.dataset.theme = theme;
+
+        for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-value]')) {
+          button.setAttribute('aria-pressed', String(button.dataset.themeValue === theme));
+        }
+      };
+
+      const prepareThemeButtons = () => {
+        const theme: Theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+        applyTheme(theme);
+
+        for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-value]')) {
+          button.onclick = () => {
+            const nextTheme: Theme = button.dataset.themeValue === 'dark' ? 'dark' : 'light';
+            applyTheme(nextTheme);
+
+            try {
+              localStorage.setItem('theme', nextTheme);
+            } catch {
+              // The selected theme still applies for the current page.
+            }
+          };
+        }
+      };
+
       const prepareExternalLinks = () => {
         for (const link of document.querySelectorAll<HTMLAnchorElement>('a[href]')) {
           const url = new URL(link.href, window.location.href);
@@ -47,8 +89,12 @@ const path = Astro.url.pathname;
         }
       };
 
+      prepareThemeButtons();
       prepareExternalLinks();
-      document.addEventListener('astro:page-load', prepareExternalLinks);
+      document.addEventListener('astro:page-load', () => {
+        prepareThemeButtons();
+        prepareExternalLinks();
+      });
     </script>
   </body>
 </html>

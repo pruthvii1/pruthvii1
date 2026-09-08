@@ -29,8 +29,8 @@ Published posts appear automatically on `/blog/` and the latest three appear on 
 Start the post body with a paragraph or `##` heading. The page supplies the post title as its only `h1`.
 Run `npm run build` after editing content.
 
-## Domains and products
+## Domains and projects
 
-Edit `directory` in `src/data/site.ts` to add domains or products with a name, type, description, URL, and link label.
-The directory currently includes `pruthvii.com`, `xwisdom.fyi`, and the GitHub profile.
-The directory appears on `/domains/`. The four abandoned projects appear as a compact list on the homepage and are maintained separately in `archive`.
+Edit `domains` in `src/data/site.ts` to add a domain with a name, type, description, URL, and link label.
+Edit `projects` in the same file to add a project with a name, description, GitHub URL, and optional product link.
+Domains and projects appear together on `/projects/`, with domains first. Projects also appear as a compact list on the homepage.

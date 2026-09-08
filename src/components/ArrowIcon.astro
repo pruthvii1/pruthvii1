@@ -1,0 +1,17 @@
+---
+import arrowLeft from '@tabler/icons/outline/arrow-left.svg?raw';
+import arrowRight from '@tabler/icons/outline/arrow-right.svg?raw';
+import arrowUpRight from '@tabler/icons/outline/arrow-up-right.svg?raw';
+
+interface Props {
+  direction: 'left' | 'right' | 'external';
+}
+
+const { direction } = Astro.props;
+const icons = {
+  left: arrowLeft,
+  right: arrowRight,
+  external: arrowUpRight,
+};
+---
+<span class="arrow-icon" aria-hidden="true" set:html={icons[direction]} />

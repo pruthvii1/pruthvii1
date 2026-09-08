@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
 import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
@@ -7,7 +8,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a,b
   <main id="main" class="inner-main">
     <h1>Blog</h1>
     <p class="section-description">Things I'm learning as I build.</p>
-    {posts.length ? <div class="post-list">{posts.map(post => <a class="post-row" href={`/blog/${post.id}/`}><h2>{post.data.title}</h2><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en', {month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})}</time><p>{post.data.description}</p></a>)}</div> : <p class="empty-note">No posts yet. I'm getting started with this blog. Come back soon for the first one.</p>}
-    <a class="text-link" href="/">← Back home</a>
+    {posts.length ? <div class="post-list">{posts.map(post => <a class="post-row" href={`/blog/${post.id}/`}><div class="post-copy"><h2>{post.data.title}</h2><p>{post.data.description}</p></div><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en', {month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})}</time></a>)}</div> : <p class="empty-note">No posts yet. I'm getting started with this blog. Come back soon for the first one.</p>}
+    <a class="text-link" href="/"><ArrowIcon direction="left" /> Back home</a>
   </main>
 </Layout>
