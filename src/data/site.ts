@@ -1,8 +1,8 @@
 export const domains = [
-  { name: 'pruthvii.com', description: 'My personal site and blog.', href: '/' },
-  { name: 'xwisdom.fyi', description: 'Summarised collections of the best tweets from people on X.', href: 'https://xwisdom.fyi' },
-  { name: 'siftx.app', description: 'A browser extension that improves how you browse X.', href: 'https://siftx.app' },
-  { name: 'twitterxapi.com', description: "Read-only, real-time X data service. please don't tell X that its me,", href: 'https://twitterxapi.com' },
+  { name: 'pruthvii.com', description: 'Personal notes, projects, and experiments.', href: '/' },
+  { name: 'xwisdom.fyi', description: 'Curated X threads, distilled for reading.', href: 'https://xwisdom.fyi' },
+  { name: 'siftx.app', description: 'A better way to browse X.', href: 'https://siftx.app' },
+  { name: 'twitterxapi.com', description: 'Real-time, read-only X data for developers.', href: 'https://twitterxapi.com' },
 ];
 
 export const projects = [

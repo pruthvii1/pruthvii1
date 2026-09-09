@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/great-vibes-latin.woff2') format('woff2');
+}
+
 :root {
   color-scheme: light;
   --bg: #fbfbfa;
@@ -6,6 +14,10 @@
   --line: #e7e7e7;
   --code-bg: #f1f1ef;
   --mark-bg: #fff1a8;
+  --domain-orange: #ffc680;
+  --domain-yellow: #ffe36a;
+  --domain-blue: #add6ff;
+  --domain-label-text: #25211c;
 }
 [data-theme='dark'] {
   color-scheme: dark;
@@ -15,6 +27,10 @@
   --line: #303030;
   --code-bg: #1e1e1e;
   --mark-bg: #625216;
+  --domain-orange: #d88448;
+  --domain-yellow: #d5b83f;
+  --domain-blue: #679fd2;
+  --domain-label-text: #151515;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 28px; }
@@ -36,7 +52,15 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 5px; }
 .arrow-icon svg { display: block; width: 100%; height: 100%; stroke-width: 1.8; }
 .site-shell { width: min(100% - 48px, 900px); margin: auto; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; }
-.wordmark { font-size: 19px; font-weight: 700; letter-spacing: -.45px; }
+.wordmark {
+  display: inline-block;
+  padding-bottom: 2px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
 .header-actions { display: flex; align-items: center; gap: 18px; }
 .site-header nav { display: flex; gap: 22px; }
 .site-header nav a { display: inline-block; padding: 8px 0; font-size: 14px; color: var(--muted); }
@@ -48,10 +72,21 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 5px; }
 .theme-button:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 .theme-label-short { display: none; }
 .about-section { padding: 44px 0 12px; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(350px, .95fr); gap: 70px; align-items: start; }
 h1 { font-size: 42px; line-height: 1.15; font-weight: 700; letter-spacing: -1.4px; margin-bottom: 24px; }
 .about-section p { max-width: 62ch; margin-bottom: 14px; color: var(--muted); }
 .social-links { display: flex; gap: 22px; margin-top: 18px; font-size: 14px; }
 .social-links a { padding: 7px 0; }
+.home-domains { padding-top: 6px; }
+.home-domains h2 { font-size: 16px; letter-spacing: -.2px; }
+.domain-list { display: grid; gap: 13px; list-style: none; margin: 20px 0 0; padding: 0; }
+.domain-row { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; gap: 11px; font-size: 14px; line-height: 1.45; }
+.domain-row span { color: var(--muted); }
+.domain-name { border-radius: 3px; color: var(--domain-label-text); padding: 2px 6px; font-weight: 600; text-decoration: none; }
+.domain-row:nth-child(3n + 1) .domain-name { background: var(--domain-orange); }
+.domain-row:nth-child(3n + 2) .domain-name { background: var(--domain-yellow); }
+.domain-row:nth-child(3n) .domain-name { background: var(--domain-blue); }
+.domain-name:hover { text-decoration: underline; }
 .home-section { margin-top: 44px; }
 h2 { font-size: 26px; line-height: 1.25; font-weight: 700; letter-spacing: -.65px; }
 .section-description { margin-top: 10px; font-size: 16px; color: var(--muted); }
@@ -123,17 +158,25 @@ h2 { font-size: 26px; line-height: 1.25; font-weight: 700; letter-spacing: -.65p
 .skip-link { position: absolute; left: 20px; top: -80px; padding: 12px; background: var(--text); color: var(--bg); z-index: 10; }
 .skip-link:focus { top: 12px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (max-width: 780px) {
+  .about-grid { grid-template-columns: 1fr; gap: 34px; }
+  .home-domains { padding-top: 0; }
+}
 @media (max-width: 520px) {
   .site-shell { width: calc(100% - 36px); }
   .site-header { gap: 12px; padding: 18px 0; }
   .header-actions { gap: 9px; }
   .site-header nav { gap: 12px; }
   .site-header nav a { font-size: 12px; }
-  .wordmark { font-size: 16px; }
+  .wordmark { font-size: 25px; }
   .theme-button { width: 22px; padding: 4px 0; font-size: 10px; }
   .theme-label-full { display: none; }
   .theme-label-short { display: inline; }
   .about-section, .inner-main, .article-main { padding-top: 32px; }
+  .about-grid { gap: 30px; }
+  .domain-list { gap: 12px; }
+  .domain-row { grid-template-columns: 1fr; gap: 4px; }
+  .domain-name { justify-self: start; }
   h1 { font-size: 36px; }
   h2 { font-size: 23px; }
   .listing-heading { font-size: 36px; }
