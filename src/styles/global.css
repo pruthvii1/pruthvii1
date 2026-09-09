@@ -2,7 +2,7 @@
   font-family: 'Great Vibes';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: block;
   src: url('/fonts/great-vibes-latin.woff2') format('woff2');
 }
 
@@ -54,6 +54,8 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 5px; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; }
 .wordmark {
   display: inline-block;
+  inline-size: 101px;
+  white-space: nowrap;
   padding-bottom: 2px;
   font-family: 'Great Vibes', cursive;
   font-size: 29px;
@@ -171,7 +173,23 @@ h2 { font-size: 26px; line-height: 1.25; font-weight: 700; letter-spacing: -.65p
 .article-back { margin-top: 25px; }
 .skip-link { position: absolute; left: 20px; top: -80px; padding: 12px; background: var(--text); color: var(--bg); z-index: 10; }
 .skip-link:focus { top: 12px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.has-js [data-reveal],
+.has-js .prose > * {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 480ms cubic-bezier(.22, 1, .36, 1),
+    transform 480ms cubic-bezier(.22, 1, .36, 1);
+}
+.has-js [data-reveal].is-visible,
+.has-js .prose > *.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .has-js [data-reveal], .has-js .prose > * { opacity: 1; transform: none; transition: none; }
+}
 @media (max-width: 780px) {
   .about-grid { grid-template-columns: 1fr; gap: 34px; }
   .home-domains { padding-top: 0; }
@@ -182,7 +200,7 @@ h2 { font-size: 26px; line-height: 1.25; font-weight: 700; letter-spacing: -.65p
   .header-actions { gap: 9px; }
   .site-header nav { gap: 12px; }
   .site-header nav a { font-size: 12px; }
-  .wordmark { font-size: 25px; }
+  .wordmark { inline-size: 87px; font-size: 25px; }
   .about-section, .inner-main, .article-main { padding-top: 32px; }
   .about-grid { gap: 30px; }
   .domain-list { gap: 12px; }

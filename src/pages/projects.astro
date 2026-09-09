@@ -6,13 +6,13 @@ import { domains, projects } from '../data/site';
 const siteOrigin = new URL('https://pruthvii.com');
 const isExternal = (href: string) => new URL(href, siteOrigin).origin !== siteOrigin.origin;
 ---
-<Layout title="Projects | pruthvii.com" description="Domains, products, and experiments built by Pruthviraj.">
+<Layout title="Projects | pruthvii.com" description="Domains, products, and experiments built by pruthvii.">
   <main id="main" class="inner-main">
     <section class="inner-section" aria-labelledby="domains-title">
-      <h1 id="domains-title" class="listing-heading">Domains</h1>
+      <h1 id="domains-title" class="listing-heading" data-reveal>Domains</h1>
       <ul class="listing-list">{domains.map(domain => {
         const external = isExternal(domain.href);
-        return <li class="listing-row">
+        return <li class="listing-row" data-reveal>
           <div class="listing-copy">
             <h3><a class="link-with-icon" href={domain.href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{domain.name}{external && <ArrowIcon direction="external" />}</a></h3>
             <p>{domain.description}</p>
@@ -22,9 +22,9 @@ const isExternal = (href: string) => new URL(href, siteOrigin).origin !== siteOr
     </section>
 
     <section class="inner-section" aria-labelledby="all-projects-title">
-      <h2 id="all-projects-title" class="listing-heading">Projects</h2>
+      <h2 id="all-projects-title" class="listing-heading" data-reveal>Projects</h2>
       <ul class="listing-list">{projects.map(project => {
-        return <li class="listing-row">
+        return <li class="listing-row" data-reveal>
           <div class="listing-copy">
             <h3>{project.name}</h3>
             <p>{project.description}</p>
