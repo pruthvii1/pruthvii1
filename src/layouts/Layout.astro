@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import ArrowIcon from '../components/ArrowIcon.astro';
+import sunIcon from '@tabler/icons/outline/sun.svg?raw';
+import moonIcon from '@tabler/icons/outline/moon.svg?raw';
 const { title = 'Pruthviraj | pruthvii.com', description = 'Pruthviraj, a builder from Latur, India. Products, experiments, and writing.', } = Astro.props;
 const path = Astro.url.pathname;
 ---
@@ -36,10 +38,11 @@ const path = Astro.url.pathname;
             <a href="/projects/" aria-current={path.startsWith('/projects') ? 'page' : undefined}>Projects</a>
             <a href="/blog/" aria-current={path.startsWith('/blog') ? 'page' : undefined}>Blog</a>
           </nav>
-          <div class="theme-switch" role="group" aria-label="Color theme">
-            <button class="theme-button" type="button" data-theme-value="light" aria-pressed="true"><span class="theme-label-full">Light</span><span class="theme-label-short" aria-hidden="true">L</span></button>
-            <button class="theme-button" type="button" data-theme-value="dark" aria-pressed="false"><span class="theme-label-full">Dark</span><span class="theme-label-short" aria-hidden="true">D</span></button>
-          </div>
+          <button class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Switch to dark theme" data-theme-toggle>
+            <span class="theme-icon theme-icon-sun" aria-hidden="true" set:html={sunIcon} />
+            <span class="theme-icon theme-icon-moon" aria-hidden="true" set:html={moonIcon} />
+            <span class="theme-switch-thumb" aria-hidden="true"></span>
+          </button>
         </div>
       </header>
       <slot />
@@ -54,18 +57,20 @@ const path = Astro.url.pathname;
       const applyTheme = (theme: Theme) => {
         document.documentElement.dataset.theme = theme;
 
-        for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-value]')) {
-          button.setAttribute('aria-pressed', String(button.dataset.themeValue === theme));
+        for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+          const isDark = theme === 'dark';
+          button.setAttribute('aria-checked', String(isDark));
+          button.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
         }
       };
 
-      const prepareThemeButtons = () => {
+      const prepareThemeToggle = () => {
         const theme: Theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
         applyTheme(theme);
 
-        for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-value]')) {
+        for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
           button.onclick = () => {
-            const nextTheme: Theme = button.dataset.themeValue === 'dark' ? 'dark' : 'light';
+            const nextTheme: Theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
             applyTheme(nextTheme);
 
             try {
@@ -89,10 +94,10 @@ const path = Astro.url.pathname;
         }
       };
 
-      prepareThemeButtons();
+      prepareThemeToggle();
       prepareExternalLinks();
       document.addEventListener('astro:page-load', () => {
-        prepareThemeButtons();
+        prepareThemeToggle();
         prepareExternalLinks();
       });
     </script>
