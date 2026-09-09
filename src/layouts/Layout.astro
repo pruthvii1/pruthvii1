@@ -39,9 +39,8 @@ const path = Astro.url.pathname;
             <a href="/blog/" aria-current={path.startsWith('/blog') ? 'page' : undefined}>Blog</a>
           </nav>
           <button class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Switch to dark theme" data-theme-toggle>
-            <span class="theme-icon theme-icon-sun" aria-hidden="true" set:html={sunIcon} />
             <span class="theme-icon theme-icon-moon" aria-hidden="true" set:html={moonIcon} />
-            <span class="theme-switch-thumb" aria-hidden="true"></span>
+            <span class="theme-icon theme-icon-sun" aria-hidden="true" set:html={sunIcon} />
           </button>
         </div>
       </header>
@@ -96,6 +95,9 @@ const path = Astro.url.pathname;
 
       prepareThemeToggle();
       prepareExternalLinks();
+      document.addEventListener('astro:before-swap', (event) => {
+        event.newDocument.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+      });
       document.addEventListener('astro:page-load', () => {
         prepareThemeToggle();
         prepareExternalLinks();
