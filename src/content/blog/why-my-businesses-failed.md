@@ -42,7 +42,7 @@ If you average my productivity from April 2025 even to today, 9th September, it 
 
 Well maybe the interception, maybe a sudden burst of requests, but X suspended my account on 4th April. That is when I gave up on Xfastr. I did nothing productive that month, besides teaching my cousin how to prepare for his competitive exams, April and May is where I mostly experimented, I made products for my own use, I also worked on a study app, testing it on my nephew I got a lot of feedback. But again, no launch, no marketing, no plans to even make this a sustained product, I gave up. I made around 20-30 tools for my own use. I used my scraper to make a viral post in May https://x.com/pruthvithinks/status/2056696279292621100 that remains the last popular post I made on this new account.
 
-## SiftX, simlar story
+## SiftX, similar story
 
 In June, I got new hopes and motivation, got siftxapp.com domain, and started working on another SaaS around X, it is september 9th now, I haven't even listed it on Chrome Web Store. Same story repeating :) I also got this domain that month, and decided to finally be myself, instead of faceless internet identities. But again not much activity to show here as well till now. In August I decided to make a lot of changes, I wanted that month to be my first 100$ MRR month whatever the case may be, but as you can see, nothing to show for that. I did work on siftx extension and made twitterxapi.com but it is still all useless as no money has been made. It is now 9th of September, 114 days till 2027. I have gone through 100s of thoughts of getting to 10k MRR, in Feb this year I promised my friend that If I don't get to 10k MRR this year I will donate 1k$ to BJPs national effort at 'uniting' the nation.
 
