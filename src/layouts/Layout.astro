@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import ArrowIcon from '../components/ArrowIcon.astro';
+import PostHog from '../components/PostHog.astro';
 import sunIcon from '@tabler/icons/outline/sun.svg?raw';
 import moonIcon from '@tabler/icons/outline/moon.svg?raw';
 const { title = 'pruthvii | pruthvii.com', description = 'pruthvii, a builder from Latur, India. Products, experiments, and writing.', } = Astro.props;
@@ -27,6 +28,7 @@ const path = Astro.url.pathname;
       }
     </script>
     <title>{title}</title>
+    <PostHog />
     <ClientRouter />
   </head>
   <body transition:animate="none">
