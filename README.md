@@ -13,7 +13,3 @@ I write about what I'm working on at [pruthvii.com](https://pruthvii.com/blog/).
 - [Kitty Killer](https://pruthvii.com/kitty): a browser game I made because my cousin wanted one. [Code](https://github.com/pruthvii1/kitty-killer)
 
 [Website](https://pruthvii.com) · [X](https://x.com/pruthvithinks) · [YouTube](https://youtube.com/@pruthvii1)
-
----
-
-This repo also contains my website. [Website development notes](docs/website.md).
